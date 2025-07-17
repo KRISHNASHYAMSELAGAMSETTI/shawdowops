@@ -5,21 +5,25 @@ import axios from "axios";
 export default function Launch() {
   const [status, setStatus] = useState("");
 
-  const launchAutomation = async () => {
+  const handleLaunch = async () => {
     setStatus("Launching...");
-    const res = await axios.post("http://localhost:8000/deploy-automation", {
-      project_name: "Instant Niche Launchpad",
-      niche: "AI-powered Study Planner",
-      target_url: "https://your-niche-site.carrd.co"
-    });
-    setStatus(res.data.message);
+    try {
+      const res = await axios.post(process.env.NEXT_PUBLIC_BACKEND_URL + "/deploy-automation", {
+        project_name: "FocusFlow AI",
+        niche: "AI-powered Study Planner",
+        target_url: "https://focusflow.carrd.co"
+      });
+      setStatus(JSON.stringify(res.data));
+    } catch (err) {
+      setStatus("Error: " + err.message);
+    }
   };
 
   return (
     <div style={{ padding: "2rem" }}>
       <h2>Launch Micro-SaaS</h2>
-      <button onClick={launchAutomation}>Launch</button>
-      <p>{status}</p>
+      <button onClick={handleLaunch}>Launch</button>
+      <pre>{status}</pre>
     </div>
   );
 }
