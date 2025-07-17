@@ -1,0 +1,9 @@
+
+Product Name: FocusFlow AI
+Niche: Indian college students
+Problem: Productivity + planning
+Solution: AI-generated study planner
+Launch Tool: ShadowOps AI
+Landing Page: Carrd
+Payment: Stripe INR ₹499
+Email Flow: Gmail via Zapier
